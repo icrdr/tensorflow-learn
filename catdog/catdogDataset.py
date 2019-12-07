@@ -43,14 +43,14 @@ for img, label in train_data:
     X.append(img)
     Y.append(label)
 
-print(len(X))
 X = np.array(X)
-print(X.shape)
+Y = np.array(Y)
 X.reshape(-1, IMG_SIZE, IMG_SIZE, 3)
-print(X.shape)
+
 plt.axis("off")
 plt.imshow(X[0])
 plt.show()
+print(X.shape)
 
 
 # %%

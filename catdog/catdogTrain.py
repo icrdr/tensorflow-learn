@@ -13,7 +13,8 @@ X = pickle.load(open('catdog\\saves\\X.pickle', 'rb'))
 Y = pickle.load(open('catdog\\saves\\Y.pickle', 'rb'))
 
 X = X/255.0
-Y = np.array(Y)
+
+
 # %%
 dropout_sets = [0.5]
 layer_sizes = [64]
