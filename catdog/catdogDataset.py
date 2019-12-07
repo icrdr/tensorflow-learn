@@ -6,23 +6,22 @@ import matplotlib.pyplot as plt
 import cv2
 import os
 
-DATASETDIR = 'D:\\Dataset\\PetImages'
+DATASET_DIR = 'D:\\Dataset\\PetImages'
 CATEGORIES = ['Cat', 'Dog']
 IMG_SIZE = 50
 
 # %%
 train_data = []
 for category in CATEGORIES:
-    path = os.path.join(DATASETDIR, category)
-    print(path)
+    path = os.path.join(DATASET_DIR, category)
     for img in os.listdir(path):
-        try:
-            img_array = cv2.imread(os.path.join(path, img))
-            img_array = cv2.cvtColor(img_array, cv2.COLOR_BGR2RGB)
-            img_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))
-            train_data.append([img_array, CATEGORIES.index(category)])
-        except Exception as e:
-            pass
+        img_path = os.path.join(path, img)
+        img_array = cv2.imread(img_path)
+        # cv imread img as bgr as default,
+        # so it has to be converted into rgb.
+        img_array = cv2.cvtColor(img_array, cv2.COLOR_BGR2RGB)
+        img_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))
+        train_data.append([img_array, CATEGORIES.index(category)])
 
 # %%
 random.shuffle(train_data)
